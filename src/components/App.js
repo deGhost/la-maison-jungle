@@ -1,32 +1,36 @@
-import Banner from "./Banner";
-import Cart from "./Cart";
-import Footer from "./Footer";
-import ShoppingList from "./ShoppingList";
-import Categories from "./Categories"
-import logo from "../assets/logo.png"
-import "../styles/layout.css"
-import { useState } from "react"
+import { useState, useEffect } from 'react'
+import Banner from './Banner'
+import logo from '../assets/logo.png'
+import Cart from './Cart'
+import Footer from './Footer'
+import ShoppingList from './ShoppingList'
+import "../styles/Layout.css"
 
 function App() {
-  const title = "La maison jungle"
-  const[cart,updateCart]=useState(0)
-  const[isOpen,setIsOpen]=useState(false)
-  const [option, setOption] = useState("")
+	
+	const savedCart = localStorage.getItem('cart')
+	const [cart, updateCart] = useState(savedCart ? JSON.parse(savedCart) : [])
+	useEffect(() => {
+		localStorage.setItem('cart', JSON.stringify(cart))
+		console.log(" you previously stored: ",
+		savedCart
+		)
+	}, [cart])
 
-  return (
-    <div>
-    <Banner>
-            <img src={logo} alt="La maison jungle" className="lmj-logo" />
-            <h1 className="lmj-title">{title}</h1>
-    </Banner>
-    
-    <div className="lmj-layout-inner">
-    <Cart cart={cart} updateCart={updateCart} isOpen={isOpen} setIsOpen={setIsOpen} />
-    <ShoppingList cart={cart} updateCart={updateCart} isOpen={isOpen} setIsOpen={setIsOpen} option={option} setOption={setOption}/>
-    </div>
-    <Footer />
-    </div>
-  );
+
+	return (
+		<div>
+			<Banner>
+				<img src={logo} alt='Jungle Land' className='lmj-logo' />
+				<h1 className='lmj-title'>Jungle Land</h1>
+			</Banner>
+			<div className='lmj-layout-inner'>
+				<Cart cart={cart} updateCart={updateCart} />
+				<ShoppingList cart={cart} updateCart={updateCart} />
+			</div>
+			<Footer />
+		</div>
+	)
 }
 
-export default App;
+export default App

@@ -16,6 +16,7 @@ export default function QuestionForm() {
             <textarea 
             value={inputValue}
             onChange={(e) => {checkValue(e.target.value)}}
+            
             />
             <button onClick={handleSubmit}>Entrer</button>
         </div>
