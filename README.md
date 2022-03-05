@@ -4,7 +4,7 @@ The user can add plants to their cart, the price and number of plants added is d
 
 ## Screenshots
 <div class="column">
-<img src="ScreenShots/s1" width=300/>
+<img src="ScreenShots/s1.png" width=300/>
 <img src="ScreenShots/s2.png" width="300" /> 
 <img src="ScreenShots/s3.png" width="300" /> 
  <img src="ScreenShots/s4.png" width="300" /> 
